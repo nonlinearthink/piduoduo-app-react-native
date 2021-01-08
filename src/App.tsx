@@ -1,10 +1,11 @@
-// react native 官方插件
+// react native
 import React from 'react';
-// react native 第三方插件
-import {Router, Stack, Scene} from 'react-native-router-flux';
-import {RootSiblingParent} from 'react-native-root-siblings';
+// redux
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/es/integration/react';
+// react native extensions
+import {Router, Stack, Scene} from 'react-native-router-flux';
+import {RootSiblingParent} from 'react-native-root-siblings';
 // 界面
 import Login from './views/Login';
 import Home from './views/Home';

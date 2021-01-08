@@ -1,13 +1,12 @@
-// react native 官方插件
+// react native
 import React from 'react';
 import {Image, Text, View, ScrollView} from 'react-native';
-// react native 第三方插件
+// react native extensions
 import {Button} from 'react-native-elements';
-import {ScaledSheet} from 'react-native-size-matters';
-// 自定义组件
-import LoginForm from '../components/entry/LoginForm';
-// 样式
-import {primaryTextColor} from '../theme/colors';
+// my components
+import LoginForm from '../components/containers/LoginForm';
+// styles
+import styles from './Login.style';
 
 const Login = () => {
   return (
@@ -31,30 +30,5 @@ const Login = () => {
     </ScrollView>
   );
 };
-
-const styles = ScaledSheet.create({
-  page: {
-    paddingHorizontal: '16@s',
-  },
-  logo: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    margin: '16@s',
-  },
-  logoImage: {
-    width: '100@s',
-    height: '100@s',
-    borderRadius: '25@s',
-  },
-  logoText: {
-    fontSize: '16@s',
-    color: primaryTextColor,
-    margin: '8@s',
-  },
-  options: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-  },
-});
 
 export default Login;

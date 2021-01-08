@@ -1,8 +1,10 @@
-// // react native 第三方插件
+// redux tool
 import {combineReducers} from 'redux';
 // reducers
-import userReducer from './userReducer';
+import user from './user';
+import session from './session';
 
 export default combineReducers({
-  user: userReducer,
+  user,
+  session,
 });

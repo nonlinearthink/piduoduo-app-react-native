@@ -1,26 +1,42 @@
-// react native 官方插件
+// react native
 import React, {useState} from 'react';
 import {View} from 'react-native';
-// react native 第三方插件
+// react native extensions
 import {Input, Icon, Button} from 'react-native-elements';
-import {ScaledSheet} from 'react-native-size-matters';
 import Toast from 'react-native-root-toast';
-// HTTP API
-import {login} from '../../apis/user';
-// 样式
-import {primaryColor, darkPrimaryColor} from '../../theme/colors';
+// http apis
+import {login} from '../../../apis/user';
+// styles
+import {darkPrimaryColor} from '../../../theme/colors';
+import styles from './LoginForm.style';
+// types
+import {UserInfo} from '../../../types';
 
-const LoginForm = () => {
+interface Props {
+  onSetToken: (token: string) => void;
+  onUpdateUserInfo: (user: UserInfo) => void;
+}
+
+const LoginForm = (props: Props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   // 是否加密密码，默认加密
   const [securePassword, setSecurePassword] = useState(true);
   // 按钮显示加载
   const [loading, setLoading] = useState(false);
+
   /**
    * 登录
    */
   function onLogin() {
+    if (username === '' || password === '') {
+      Toast.show('用户名或者密码为空', {
+        position: Toast.positions.CENTER,
+        animation: true,
+        hideOnPress: true,
+      });
+      return;
+    }
     // 开启加载动效
     setLoading(true);
     login({username, password})
@@ -33,8 +49,11 @@ const LoginForm = () => {
           position: Toast.positions.CENTER,
           animation: true,
           hideOnPress: true,
-          delay: 1,
         });
+        // 更新 token
+        props.onSetToken(res.data.data.token);
+        // 更新用户信息
+        props.onUpdateUserInfo(res.data.data.user);
       })
       .catch((err) => {
         console.error(err);
@@ -46,13 +65,14 @@ const LoginForm = () => {
             position: Toast.positions.CENTER,
             animation: true,
             hideOnPress: true,
-            delay: 1,
           });
         }
       });
   }
+
   return (
     <View>
+      {/* 用户名输入框 */}
       <Input
         placeholder="用户名"
         leftIcon={
@@ -65,6 +85,7 @@ const LoginForm = () => {
         leftIconContainerStyle={styles.prefixIcon}
         onChangeText={setUsername}
       />
+      {/* 密码输入框 */}
       <Input
         placeholder="密码"
         leftIcon={
@@ -91,13 +112,3 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
-
-const styles = ScaledSheet.create({
-  prefixIcon: {
-    marginHorizontal: '4@s',
-  },
-  blockButton: {
-    backgroundColor: primaryColor,
-    marginVertical: '16@s',
-  },
-});

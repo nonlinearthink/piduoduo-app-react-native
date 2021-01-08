@@ -1,17 +1,16 @@
-export interface IUser {
+export interface UserInfo {
   username?: string;
-  token?: string;
-  email?: string;
+  nickname?: string;
   isMale?: boolean;
   signature?: string;
-  nickname?: string;
-  frozen?: boolean;
+  email?: string;
   phone?: string;
+  frozen?: boolean;
   defrostingTime?: number;
-  isLogin?: boolean;
 }
 
-export interface ILoginForm {
-  username: string;
-  password: string;
+export interface StoreState {
+  token?: string;
+  isLogin?: boolean;
+  user: UserInfo;
 }
