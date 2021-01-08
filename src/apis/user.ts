@@ -1,6 +1,6 @@
 import axios from 'axios';
-import {LoginForm} from './types';
+import {ILoginForm} from '../types';
 
-export async function login(data: LoginForm) {
+export async function login(data: ILoginForm) {
   return await axios.post('/user/session', data);
 }
