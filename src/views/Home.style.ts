@@ -1,0 +1,17 @@
+import {ScaledSheet} from 'react-native-size-matters';
+import {defaultBackgroundColor, primaryColor} from '../theme/colors';
+
+const styles = ScaledSheet.create({
+  searchBarContainer: {
+    backgroundColor: primaryColor,
+    padding: '16@s',
+    borderBottomColor: defaultBackgroundColor,
+  },
+  searchBarInputContainer: {
+    backgroundColor: defaultBackgroundColor,
+    height: '38@s',
+    borderRadius: '19@s',
+  },
+});
+
+export default styles;

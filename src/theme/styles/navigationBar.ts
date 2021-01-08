@@ -7,5 +7,7 @@ export const PrimaryNavigationBarStyle = ScaledSheet.create({
   titleStyle: {
     color: accentTextColor,
     fontSize: '16@s',
+    textAlign: 'center',
+    flex: 1,
   },
 });

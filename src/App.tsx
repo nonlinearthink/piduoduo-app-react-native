@@ -4,11 +4,14 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/es/integration/react';
 // react native extensions
-import {Router, Stack, Scene} from 'react-native-router-flux';
+import {Router, Stack, Scene, Tabs} from 'react-native-router-flux';
 import {RootSiblingParent} from 'react-native-root-siblings';
 // 界面
 import Login from './views/Login';
 import Home from './views/Home';
+import Creator from './views/Creator';
+import Message from './views/Message';
+import User from './views/User';
 // 样式
 import {PrimaryNavigationBarStyle} from './theme/styles/navigationBar';
 import {accentIconsColor} from './theme/colors/index';
@@ -34,8 +37,15 @@ const App = () => {
                 navigationBarStyle={
                   PrimaryNavigationBarStyle.navigationBarStyle
                 }
+                rightTitle=" "
+                onRight={() => {}}
               />
-              <Scene key="home" component={Home} />
+              <Tabs key="tabbar" swipeEnabled={true} wrap={false} hideNavBar>
+                <Scene key="home" component={Home} tabBarLabel="首页" />
+                <Scene key="creator" component={Creator} tabBarLabel="写作" />
+                <Scene key="message" component={Message} tabBarLabel="消息" />
+                <Scene key="user" component={User} tabBarLabel="用户" />
+              </Tabs>
             </Stack>
           </Router>
         </PersistGate>
