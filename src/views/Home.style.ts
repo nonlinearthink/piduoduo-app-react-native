@@ -1,5 +1,9 @@
 import {ScaledSheet} from 'react-native-size-matters';
-import {defaultBackgroundColor, primaryColor} from '../theme/colors';
+import {
+  defaultBackgroundColor,
+  primaryColor,
+  secondaryAccentColor,
+} from '../theme/colors';
 
 const styles = ScaledSheet.create({
   searchBarContainer: {
@@ -11,6 +15,15 @@ const styles = ScaledSheet.create({
     backgroundColor: defaultBackgroundColor,
     height: '38@s',
     borderRadius: '19@s',
+  },
+  tabContainer: {
+    backgroundColor: primaryColor,
+  },
+  tabBarUnderline: {
+    backgroundColor: secondaryAccentColor,
+  },
+  tabText: {
+    color: defaultBackgroundColor,
   },
 });
 

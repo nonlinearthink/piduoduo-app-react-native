@@ -4,6 +4,7 @@ export const lightPrimaryColor: string = '#B3E5FC';
 export const accentTextColor: string = '#FFFFFF';
 export const accentIconsColor: string = '#FFFFFF';
 export const accentColor: string = '#448AFF';
+export const secondaryAccentColor: string = '#F44336';
 export const primaryTextColor: string = '#212121';
 export const secondaryTextColor: string = '#757575';
 export const divierColor: string = '#BDBDBD';
