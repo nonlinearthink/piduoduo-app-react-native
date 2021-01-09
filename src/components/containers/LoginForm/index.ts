@@ -13,4 +13,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   onUpdateUserInfo: (userInfo: UserInfo) => dispatch(updateUserInfo(userInfo)),
 });
 
-export default connect(mapDispatchToProps)(LoginForm);
+export default connect(null, mapDispatchToProps)(LoginForm);

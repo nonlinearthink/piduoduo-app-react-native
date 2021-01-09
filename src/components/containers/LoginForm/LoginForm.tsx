@@ -4,6 +4,7 @@ import {View} from 'react-native';
 // react native extensions
 import {Input, Icon, Button} from 'react-native-elements';
 import Toast from 'react-native-root-toast';
+import {Actions} from 'react-native-router-flux';
 // http apis
 import {login} from '../../../apis/user';
 // styles
@@ -44,6 +45,7 @@ const LoginForm = (props: Props) => {
         console.log(res.data);
         // 取消加载动效
         setLoading(false);
+        Actions.jump('home');
         // 显示登录成功
         Toast.show('登录成功', {
           position: Toast.positions.CENTER,

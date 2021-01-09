@@ -1,11 +1,12 @@
 // react native
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
+import UserInfoCard from '../components/containers/UserInfoCard';
 
 const User = () => {
   return (
     <View>
-      <Text>{'我的'}</Text>
+      <UserInfoCard />
     </View>
   );
 };

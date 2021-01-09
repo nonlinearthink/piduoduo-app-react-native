@@ -10,7 +10,9 @@ export interface UserInfo {
 }
 
 export interface StoreState {
-  token?: string;
-  isLogin?: boolean;
+  session: {
+    token?: string;
+    isLogin?: boolean;
+  };
   user: UserInfo;
 }

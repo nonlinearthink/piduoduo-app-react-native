@@ -6,6 +6,7 @@ import {PersistGate} from 'redux-persist/es/integration/react';
 // react native extensions
 import {Router, Stack, Scene, Tabs} from 'react-native-router-flux';
 import {RootSiblingParent} from 'react-native-root-siblings';
+import {Icon} from 'react-native-elements';
 // 界面
 import Login from './views/Login';
 import Home from './views/Home';
@@ -14,7 +15,7 @@ import Message from './views/Message';
 import User from './views/User';
 // 样式
 import {PrimaryNavigationBarStyle} from './theme/styles/navigationBar';
-import {accentIconsColor} from './theme/colors/index';
+import {accentIconsColor, darkPrimaryColor} from './theme/colors/index';
 // redux
 import {store, persistor} from './store/index';
 
@@ -40,11 +41,60 @@ const App = () => {
                 rightTitle=" "
                 onRight={() => {}}
               />
-              <Tabs key="tabbar" swipeEnabled={true} wrap={false} hideNavBar>
-                <Scene key="home" component={Home} tabBarLabel="首页" />
-                <Scene key="creator" component={Creator} tabBarLabel="写作" />
-                <Scene key="message" component={Message} tabBarLabel="消息" />
-                <Scene key="user" component={User} tabBarLabel="用户" />
+              <Tabs
+                key="tabbar"
+                swipeEnabled={true}
+                wrap={false}
+                hideNavBar
+                activeTintColor={darkPrimaryColor}>
+                <Scene
+                  key="home"
+                  component={Home}
+                  tabBarLabel="首页"
+                  icon={({focused}) => (
+                    <Icon
+                      name="home"
+                      type="antdesign"
+                      color={focused ? darkPrimaryColor : ''}
+                    />
+                  )}
+                />
+                <Scene
+                  key="creator"
+                  component={Creator}
+                  tabBarLabel="写作"
+                  icon={({focused}) => (
+                    <Icon
+                      name="edit"
+                      type="antdesign"
+                      color={focused ? darkPrimaryColor : ''}
+                    />
+                  )}
+                />
+                <Scene
+                  key="message"
+                  component={Message}
+                  tabBarLabel="消息"
+                  icon={({focused}) => (
+                    <Icon
+                      name="message1"
+                      type="antdesign"
+                      color={focused ? darkPrimaryColor : ''}
+                    />
+                  )}
+                />
+                <Scene
+                  key="user"
+                  component={User}
+                  tabBarLabel="用户"
+                  icon={({focused}) => (
+                    <Icon
+                      name="user"
+                      type="antdesign"
+                      color={focused ? darkPrimaryColor : ''}
+                    />
+                  )}
+                />
               </Tabs>
             </Stack>
           </Router>
