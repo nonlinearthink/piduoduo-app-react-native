@@ -1,5 +1,9 @@
 import {ScaledSheet} from 'react-native-size-matters';
-import {accentTextColor, primaryColor} from '../colors';
+import {
+  accentTextColor,
+  globalAppBackgroundColor,
+  primaryColor,
+} from '../colors';
 export const PrimaryNavigationBarStyle = ScaledSheet.create({
   navigationBarStyle: {
     backgroundColor: primaryColor,
@@ -9,5 +13,11 @@ export const PrimaryNavigationBarStyle = ScaledSheet.create({
     fontSize: '16@s',
     textAlign: 'center',
     flex: 1,
+  },
+});
+
+export const appStyle = ScaledSheet.create({
+  appStyle: {
+    backgroundColor: globalAppBackgroundColor,
   },
 });

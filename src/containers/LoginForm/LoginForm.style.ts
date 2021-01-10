@@ -1,7 +1,7 @@
 // style tool
 import {ScaledSheet} from 'react-native-size-matters';
 // styles
-import {primaryColor} from '../../../theme/colors';
+import {primaryColor} from '../../theme/colors';
 
 const styles = ScaledSheet.create({
   prefixIcon: {

@@ -8,14 +8,11 @@ import {Router, Stack, Scene, Tabs} from 'react-native-router-flux';
 import {RootSiblingParent} from 'react-native-root-siblings';
 import {Icon} from 'react-native-elements';
 // 界面
-import Login from './views/Login';
-import Home from './views/Home';
-import Creator from './views/Creator';
-import Message from './views/Message';
-import User from './views/User';
+import {Login, Home, Creator, Message, User, SettingMain} from './screens';
 // 样式
 import {PrimaryNavigationBarStyle} from './theme/styles/navigationBar';
-import {accentIconsColor, darkPrimaryColor} from './theme/colors/index';
+import {accentIconsColor, darkPrimaryColor} from './theme/colors';
+import {appStyle} from './theme/styles';
 // redux
 import {store, persistor} from './store/index';
 
@@ -26,7 +23,7 @@ const App = () => {
       <Provider store={store}>
         {/* 使用 redux-persist */}
         <PersistGate loading={null} persistor={persistor}>
-          <Router>
+          <Router sceneStyle={appStyle.rootContainer}>
             <Stack key="root">
               <Scene
                 key="login"
@@ -96,6 +93,19 @@ const App = () => {
                   )}
                 />
               </Tabs>
+              <Scene
+                key="settingMain"
+                component={SettingMain}
+                title="设置"
+                back
+                backButtonTintColor={accentIconsColor}
+                titleStyle={PrimaryNavigationBarStyle.titleStyle}
+                navigationBarStyle={
+                  PrimaryNavigationBarStyle.navigationBarStyle
+                }
+                rightTitle=" "
+                onRight={() => {}}
+              />
             </Stack>
           </Router>
         </PersistGate>

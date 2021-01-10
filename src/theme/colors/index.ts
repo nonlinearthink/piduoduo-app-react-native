@@ -9,3 +9,5 @@ export const primaryTextColor: string = '#212121';
 export const secondaryTextColor: string = '#757575';
 export const divierColor: string = '#BDBDBD';
 export const defaultBackgroundColor = '#FFFFFF';
+export const globalAppBackgroundColor = '#F8F8F8';
+export const borderColor = '#F0F0F0';

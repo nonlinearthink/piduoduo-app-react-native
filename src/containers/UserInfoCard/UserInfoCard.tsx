@@ -6,11 +6,11 @@ import {Actions} from 'react-native-router-flux';
 // styles
 import styles from './UserInfoCard.style';
 // types
-import {UserInfo} from '../../../types';
+import {UserInfo} from '../../types';
 
 interface Props {
-  isLogin: boolean;
-  user: UserInfo;
+  isLogin?: boolean;
+  user?: UserInfo;
 }
 
 const signatureView = (signature: string | undefined) => {
@@ -33,15 +33,17 @@ const UserInfoCard = (props: Props) => {
         <Avatar
           size="large"
           rounded
-          source={require('../../../assets/images/avatar.png')}
+          source={require('../../assets/images/avatar.png')}
           containerStyle={styles.avatarContainer}
         />
         {(() => {
           if (props.isLogin) {
             return (
               <View>
-                <Text style={styles.username}>{props.user.username}</Text>
-                {signatureView(props.user.signature)}
+                <Text style={styles.username}>
+                  {props.user ? props.user.username : ''}
+                </Text>
+                {signatureView(props.user ? props.user.signature : '')}
               </View>
             );
           } else {

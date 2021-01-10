@@ -2,9 +2,9 @@
 import {Dispatch} from 'redux';
 import {connect} from 'react-redux';
 // redux action function
-import {updateUserInfo, setToken} from '../../../store/actions';
+import {updateUserInfo, setToken} from '../../store/actions';
 // types
-import {UserInfo} from '../../../types';
+import {UserInfo} from '../../types';
 // inner components
 import LoginForm from './LoginForm';
 

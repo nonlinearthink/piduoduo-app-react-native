@@ -6,12 +6,12 @@ import {Input, Icon, Button} from 'react-native-elements';
 import Toast from 'react-native-root-toast';
 import {Actions} from 'react-native-router-flux';
 // http apis
-import {login} from '../../../apis/user';
+import {login} from '../../apis/user';
 // styles
-import {darkPrimaryColor} from '../../../theme/colors';
+import {darkPrimaryColor} from '../../theme/colors';
 import styles from './LoginForm.style';
 // types
-import {UserInfo} from '../../../types';
+import {UserInfo} from '../../types';
 
 interface Props {
   onSetToken: (token: string) => void;

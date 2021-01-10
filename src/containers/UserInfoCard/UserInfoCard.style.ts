@@ -1,6 +1,6 @@
 // style tool
 import {ScaledSheet} from 'react-native-size-matters';
-import {accentTextColor, primaryColor} from '../../../theme/colors';
+import {accentTextColor, primaryColor} from '../../theme/colors';
 // styles
 
 const styles = ScaledSheet.create({

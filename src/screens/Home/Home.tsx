@@ -14,8 +14,8 @@ import {
 } from 'native-base';
 // styles
 import styles from './Home.style';
-import getTheme from '../../native-base-theme/components';
-import platform from '../../native-base-theme/variables/variables';
+import getTheme from '../../../native-base-theme/components';
+import platform from '../../../native-base-theme/variables/variables';
 
 const Home = () => {
   return (

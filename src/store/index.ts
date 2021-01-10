@@ -13,6 +13,8 @@ const persistConfig = {
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-// 导出
-export const store = createStore(persistedReducer);
+// react native debugger config
+export const store = window.__REDUX_DEVTOOLS_EXTENSION__
+  ? createStore(persistedReducer, window.__REDUX_DEVTOOLS_EXTENSION__())
+  : createStore(persistedReducer);
 export const persistor = persistStore(store);

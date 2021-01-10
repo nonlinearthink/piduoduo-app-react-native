@@ -1,7 +1,7 @@
 // redux
 import {connect} from 'react-redux';
 // types
-import {StoreState} from '../../../types';
+import {StoreState} from '../../types';
 // inner components
 import UserInfoCard from './UserInfoCard';
 

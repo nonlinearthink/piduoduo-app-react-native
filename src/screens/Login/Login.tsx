@@ -5,7 +5,7 @@ import {Image, Text, View, ScrollView} from 'react-native';
 import {Button} from 'react-native-elements';
 import {Actions} from 'react-native-router-flux';
 // my components
-import LoginForm from '../components/containers/LoginForm';
+import LoginForm from '../../containers/LoginForm';
 // styles
 import styles from './Login.style';
 
@@ -15,7 +15,7 @@ const Login = () => {
       {/* logo */}
       <View style={styles.logo}>
         <Image
-          source={require('../assets/images/logo.png')}
+          source={require('../../assets/images/logo.png')}
           style={styles.logoImage}
         />
         <Text style={styles.logoText}>批多多</Text>

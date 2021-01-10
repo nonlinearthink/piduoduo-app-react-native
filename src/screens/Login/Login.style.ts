@@ -1,5 +1,5 @@
 import {ScaledSheet} from 'react-native-size-matters';
-import {primaryTextColor} from '../theme/colors';
+import {primaryTextColor} from '../../theme/colors';
 
 const styles = ScaledSheet.create({
   page: {

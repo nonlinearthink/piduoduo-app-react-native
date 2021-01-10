@@ -3,7 +3,7 @@ import {
   defaultBackgroundColor,
   primaryColor,
   secondaryAccentColor,
-} from '../theme/colors';
+} from '../../theme/colors';
 
 const styles = ScaledSheet.create({
   searchBarContainer: {
