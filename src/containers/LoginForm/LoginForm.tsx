@@ -45,7 +45,7 @@ const LoginForm = (props: Props) => {
         console.log(res.data);
         // 取消加载动效
         setLoading(false);
-        Actions.jump('home');
+        Actions.jump('Home');
         // 显示登录成功
         Toast.show('登录成功', {
           position: Toast.positions.CENTER,

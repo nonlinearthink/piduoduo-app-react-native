@@ -1,13 +1,16 @@
 // react native
 import React from 'react';
 import {View, Text} from 'react-native';
+// react native extensions
 import {Icon} from 'react-native-elements';
-import UserInfoCard from '../../containers/UserInfoCard';
-import SettingCell from '../../components/SettingCell';
-import {primaryColor, primaryTextColor} from '../../theme/colors';
-import styles from './User.style';
 import Toast from 'react-native-root-toast';
 import {Actions} from 'react-native-router-flux';
+// my components
+import UserInfoCard from '../../containers/UserInfoCard';
+import SettingCell from '../../components/SettingCell';
+// styles
+import {primaryColor, primaryTextColor} from '../../theme/colors';
+import styles from './User.style';
 
 const User = () => {
   return (
@@ -100,7 +103,7 @@ const User = () => {
           }
           isLink
           onPress={() => {
-            Actions.jump('settingMain');
+            Actions.jump('Setting');
           }}
         />
       </View>

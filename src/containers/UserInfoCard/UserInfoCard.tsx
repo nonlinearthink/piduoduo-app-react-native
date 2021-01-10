@@ -1,6 +1,7 @@
 // react native
 import React from 'react';
 import {Text, View} from 'react-native';
+// react native extensions
 import {Avatar, Button} from 'react-native-elements';
 import {Actions} from 'react-native-router-flux';
 // styles
@@ -53,7 +54,7 @@ const UserInfoCard = (props: Props) => {
                 type="clear"
                 titleStyle={styles.text}
                 onPress={() => {
-                  Actions.push('login');
+                  Actions.push('Login');
                 }}
               />
             );

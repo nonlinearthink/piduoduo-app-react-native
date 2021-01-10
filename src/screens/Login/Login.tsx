@@ -25,7 +25,7 @@ const Login = () => {
       {/* 其他登录选项 */}
       <View style={styles.options}>
         <Button title="注册新用户" type="clear" />
-        <Button title="游客模式" type="clear" onPress={Actions.home} />
+        <Button title="游客模式" type="clear" onPress={Actions.Home} />
         <Button title="忘记密码" type="clear" />
       </View>
     </ScrollView>

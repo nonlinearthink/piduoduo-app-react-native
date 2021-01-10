@@ -1,8 +1,7 @@
 // style tool
 import {ScaledSheet} from 'react-native-size-matters';
+// colors
 import {defaultBackgroundColor, secondaryAccentColor} from '../../theme/colors';
-
-// styles
 
 const styles = ScaledSheet.create({
   settingGroup: {

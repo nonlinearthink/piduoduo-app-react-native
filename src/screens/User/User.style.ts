@@ -1,7 +1,7 @@
 // style tool
 import {ScaledSheet} from 'react-native-size-matters';
+// colors
 import {borderColor, defaultBackgroundColor} from '../../theme/colors';
-// styles
 
 const styles = ScaledSheet.create({
   floatCard: {

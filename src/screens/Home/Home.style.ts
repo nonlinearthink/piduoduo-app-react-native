@@ -1,4 +1,6 @@
+// style tools
 import {ScaledSheet} from 'react-native-size-matters';
+// colors
 import {
   defaultBackgroundColor,
   primaryColor,

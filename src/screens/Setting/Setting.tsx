@@ -1,12 +1,18 @@
+// react native
 import React from 'react';
 import {View} from 'react-native';
-import SettingCell from '../../components/SettingCell';
-import styles from './Setting.style';
+// react native extensions
 import {Button} from 'react-native-elements';
+import {Actions} from 'react-native-router-flux';
+// redux tool
 import {Dispatch} from 'redux';
 import {connect} from 'react-redux';
 import {clearToken, initUserInfo} from '../../store/actions';
-import {Actions} from 'react-native-router-flux';
+// my components
+import SettingCell from '../../components/SettingCell';
+// styles
+import styles from './Setting.style';
+// types
 import {StoreState} from '../../types';
 
 interface Props {
@@ -44,7 +50,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   onQuit: () => {
     dispatch(clearToken());
     dispatch(initUserInfo());
-    Actions.replace('login');
+    Actions.replace('Login');
   },
 });
 
