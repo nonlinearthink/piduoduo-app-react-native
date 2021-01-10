@@ -1,1 +1,2 @@
 *.pbxproj -text
+native-base-theme/ export-ignore
