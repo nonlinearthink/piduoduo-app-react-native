@@ -8,16 +8,6 @@ import {
 } from '../../theme/colors';
 
 const styles = ScaledSheet.create({
-  searchBarContainer: {
-    backgroundColor: primaryColor,
-    padding: '16@s',
-    borderBottomColor: defaultBackgroundColor,
-  },
-  searchBarInputContainer: {
-    backgroundColor: defaultBackgroundColor,
-    height: '38@s',
-    borderRadius: '19@s',
-  },
   tabContainer: {
     backgroundColor: primaryColor,
   },
@@ -26,9 +16,6 @@ const styles = ScaledSheet.create({
   },
   tabText: {
     color: defaultBackgroundColor,
-  },
-  safeAreaContainer: {
-    flex: 1,
   },
 });
 
