@@ -10,7 +10,7 @@ import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/es/integration/react';
 import {store, persistor} from './store';
 // screens
-import {Login, Home, Creator, Message, User, Setting} from './screens';
+import {Login, Home, Creator, Message, User, Setting, Article} from './screens';
 // styles
 import {accentIconsColor, darkPrimaryColor} from './theme/colors';
 import {appStyle, PrimaryNavigationBarStyle} from './theme/styles';
@@ -83,6 +83,19 @@ export default class App extends React.Component {
                     key="Login"
                     component={Login}
                     title="登录"
+                    back
+                    backButtonTintColor={accentIconsColor}
+                    titleStyle={PrimaryNavigationBarStyle.titleStyle}
+                    navigationBarStyle={
+                      PrimaryNavigationBarStyle.navigationBarStyle
+                    }
+                    rightTitle=" "
+                    onRight={() => {}}
+                  />
+                  <Scene
+                    key="Article"
+                    component={Article}
+                    title="精选文章"
                     back
                     backButtonTintColor={accentIconsColor}
                     titleStyle={PrimaryNavigationBarStyle.titleStyle}

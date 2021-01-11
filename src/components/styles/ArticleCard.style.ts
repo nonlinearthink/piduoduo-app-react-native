@@ -12,7 +12,6 @@ const styles = ScaledSheet.create({
   container: {
     padding: 16,
     backgroundColor: defaultBackgroundColor,
-    borderRadius: '8@s',
   },
   image: {
     width: screen.width - 32,
