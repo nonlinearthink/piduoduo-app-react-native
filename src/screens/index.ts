@@ -1,9 +1,9 @@
 import * as CreatorAlias from './Creator';
 import * as HomeAlias from './Home';
 import * as LoginAlias from './Login/Login';
-import * as MessageAlias from './Message/Message';
+import * as MessageAlias from './Message';
 import * as SettingAlias from './Setting/Setting';
-import * as UserAlias from './User/User';
+import * as UserAlias from './User';
 import * as ArticleAlias from './Article';
 
 export const Creator = CreatorAlias.default;

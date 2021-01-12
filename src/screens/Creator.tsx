@@ -5,6 +5,7 @@ import {Text, FlatList} from 'react-native';
 import {Container, Tab, Tabs, StyleProvider, TabHeading} from 'native-base';
 import {Header, Divider} from 'react-native-elements';
 import {ScaledSheet} from 'react-native-size-matters';
+import {useSelector} from 'react-redux';
 // styles
 import getTheme from '../../native-base-theme/components';
 import theme from '../../native-base-theme/variables/variables';
@@ -18,14 +19,16 @@ import {
 import {getUserComposition} from '../apis/index';
 import {Composition} from '../apis/types';
 import CompositionCard from '../components/CompositionCard';
+import {StoreState} from '../types';
 
 const Creator = () => {
   const [draftList, setDraftList] = useState<Composition[]>([]);
   const [submittedList, setSubmittedList] = useState<Composition[]>([]);
   const [publishedList, setPublishedList] = useState<Composition[]>([]);
   const [refreshing, setRefreshing] = useState(true);
+  const isLogin = useSelector((state: StoreState) => state.session.isLogin);
   useEffect(() => {
-    if (refreshing) {
+    if (isLogin && refreshing) {
       getUserComposition()
         .then((res) => {
           console.log(res);
@@ -50,8 +53,10 @@ const Creator = () => {
           console.error(err);
           setRefreshing(false);
         });
+    } else {
+      setRefreshing(false);
     }
-  }, [refreshing]);
+  }, [isLogin, refreshing]);
   return (
     // @ts-ignore
     <StyleProvider style={getTheme(theme)}>

@@ -49,6 +49,8 @@ const FollowView = (props: Props) => {
           console.error(err);
           setRefreshing(false);
         });
+    } else {
+      setRefreshing(false);
     }
   }, [isLogin, username, refreshing]);
   return (

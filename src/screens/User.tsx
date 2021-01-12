@@ -5,16 +5,20 @@ import {View, Text} from 'react-native';
 import {Icon} from 'react-native-elements';
 import Toast from 'react-native-root-toast';
 import {Actions} from 'react-native-router-flux';
+import {SafeAreaView} from 'react-native-safe-area-context';
 // my components
-import UserInfoCard from '../../containers/UserInfoCard';
-import SettingCell from '../../components/SettingCell';
+import UserInfoCard from '../containers/UserInfoCard';
+import SettingCell from '../components/SettingCell';
 // styles
-import {primaryColor, primaryTextColor} from '../../theme/colors';
-import styles from './User.style';
+import {primaryColor, primaryTextColor} from '../theme/colors';
+// style tool
+import {ScaledSheet} from 'react-native-size-matters';
+// colors
+import {borderColor, defaultBackgroundColor} from '../theme/colors';
 
 const User = () => {
   return (
-    <View>
+    <SafeAreaView style={styles.safeAreaContainer}>
       <UserInfoCard />
       <View style={styles.floatCardContainer}>
         <View style={styles.floatCard}>
@@ -107,8 +111,37 @@ const User = () => {
           }}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
 export default User;
+
+const styles = ScaledSheet.create({
+  floatCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    backgroundColor: defaultBackgroundColor,
+    marginTop: '-16@s',
+    paddingVertical: '12@s',
+    borderWidth: '1@s',
+    borderColor: borderColor,
+    borderRadius: '8@s',
+  },
+  floatCardContainer: {
+    paddingHorizontal: '16@s',
+    backgroundColor: defaultBackgroundColor,
+  },
+  icon: {
+    marginRight: '8@s',
+  },
+  settingGroup: {
+    backgroundColor: defaultBackgroundColor,
+    marginVertical: '8@s',
+    paddingHorizontal: '16@s',
+  },
+  safeAreaContainer: {
+    flex: 1,
+  },
+});
