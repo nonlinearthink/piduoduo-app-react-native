@@ -92,19 +92,7 @@ export default class App extends React.Component {
                     rightTitle=" "
                     onRight={() => {}}
                   />
-                  <Scene
-                    key="Article"
-                    component={Article}
-                    title="精选文章"
-                    back
-                    backButtonTintColor={accentIconsColor}
-                    titleStyle={PrimaryNavigationBarStyle.titleStyle}
-                    navigationBarStyle={
-                      PrimaryNavigationBarStyle.navigationBarStyle
-                    }
-                    rightTitle=" "
-                    onRight={() => {}}
-                  />
+                  <Scene key="Article" component={Article} hideNavBar />
                   <Scene
                     key="Setting"
                     component={Setting}

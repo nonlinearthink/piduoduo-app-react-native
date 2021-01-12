@@ -15,18 +15,20 @@ import {secondaryTextColor} from '../../theme/colors';
 import {Article} from '../../apis/types';
 
 const ArticleListView = () => {
-  const [refreshing, setRefreshing] = useState(false);
+  const [refreshing, setRefreshing] = useState(true);
   const [articleList, setArticleList] = useState<Article[]>([]);
   useEffect(() => {
-    getArticleList().then((res) => {
-      console.log(res.data);
-      setArticleList(
-        res.data.data.articleModelList.sort(
-          (a: Article, b: Article) => b.articleId - a.articleId,
-        ),
-      );
-      setRefreshing(false);
-    });
+    if (refreshing) {
+      getArticleList().then((res) => {
+        console.log(res.data);
+        setArticleList(
+          res.data.data.articleModelList.sort(
+            (a: Article, b: Article) => b.articleId - a.articleId,
+          ),
+        );
+        setRefreshing(false);
+      });
+    }
   }, [refreshing]);
   return (
     <FlatList

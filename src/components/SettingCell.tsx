@@ -6,8 +6,8 @@ import {
   GestureResponderEvent,
 } from 'react-native';
 import {Icon} from 'react-native-elements';
-import {secondaryTextColor} from '../../theme/colors';
-import styles from './index.style';
+import {secondaryTextColor} from '../theme/colors';
+import {ScaledSheet} from 'react-native-size-matters';
 
 interface Props {
   prefix?: React.ComponentElement<any, any> | undefined;
@@ -49,5 +49,21 @@ const SettingCell = (props = defaultProps) => {
     </TouchableNativeFeedback>
   );
 };
+
+const styles = ScaledSheet.create({
+  cellContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: '8@s',
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: '14@s',
+  },
+});
 
 export default SettingCell;
