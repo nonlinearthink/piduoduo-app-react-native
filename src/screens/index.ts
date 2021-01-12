@@ -1,4 +1,4 @@
-import * as CreatorAlias from './Creator/Creator';
+import * as CreatorAlias from './Creator';
 import * as HomeAlias from './Home';
 import * as LoginAlias from './Login/Login';
 import * as MessageAlias from './Message/Message';

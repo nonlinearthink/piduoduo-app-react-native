@@ -9,8 +9,7 @@ import ArticleCard from '../../components/ArticleCard';
 // apis
 import {getArticleList} from '../../apis';
 // styles
-import {ScaledSheet} from 'react-native-size-matters';
-import {secondaryTextColor} from '../../theme/colors';
+import {borderColor} from '../../theme/colors';
 // types
 import {Article} from '../../apis/types';
 
@@ -19,15 +18,20 @@ const ArticleListView = () => {
   const [articleList, setArticleList] = useState<Article[]>([]);
   useEffect(() => {
     if (refreshing) {
-      getArticleList().then((res) => {
-        console.log(res.data);
-        setArticleList(
-          res.data.data.articleModelList.sort(
-            (a: Article, b: Article) => b.articleId - a.articleId,
-          ),
-        );
-        setRefreshing(false);
-      });
+      getArticleList()
+        .then((res) => {
+          console.log(res.data);
+          setArticleList(
+            res.data.data.articleModelList.sort(
+              (a: Article, b: Article) => b.articleId - a.articleId,
+            ),
+          );
+          setRefreshing(false);
+        })
+        .catch((err) => {
+          console.error(err);
+          setRefreshing(false);
+        });
     }
   }, [refreshing]);
   return (
@@ -45,18 +49,13 @@ const ArticleListView = () => {
         );
       }}
       keyExtractor={(item) => item.articleId.toString()}
-      ItemSeparatorComponent={() => <Divider style={styles.divider} />}
+      ItemSeparatorComponent={() => (
+        <Divider style={{backgroundColor: borderColor}} />
+      )}
       refreshing={refreshing}
       onRefresh={() => setRefreshing(true)}
     />
   );
 };
-
-const styles = ScaledSheet.create({
-  divider: {
-    backgroundColor: secondaryTextColor,
-    marginHorizontal: '16@s',
-  },
-});
 
 export default ArticleListView;

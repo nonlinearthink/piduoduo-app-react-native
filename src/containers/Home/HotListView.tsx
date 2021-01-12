@@ -3,23 +3,30 @@ import React, {useState, useEffect} from 'react';
 import {FlatList} from 'react-native';
 // react native extensions
 // import {Actions} from 'react-native-router-flux';
+import {Divider} from 'react-native-elements';
 // my components
 import HotCard from '../../components/HotCard';
 // apis
 import {getHotList} from '../../apis';
 // types
 import {HotComposition} from '../../apis/types';
+import {borderColor} from '../../theme/colors';
 
 const ArticleListView = () => {
   const [refreshing, setRefreshing] = useState(true);
   const [compositionList, setCompositionList] = useState<HotComposition[]>([]);
   useEffect(() => {
     if (refreshing) {
-      getHotList().then((res) => {
-        console.log(res.data);
-        setCompositionList(res.data.data.hotCardModelList);
-        setRefreshing(false);
-      });
+      getHotList()
+        .then((res) => {
+          console.log(res.data);
+          setCompositionList(res.data.data.hotCardModelList);
+          setRefreshing(false);
+        })
+        .catch((err) => {
+          console.error(err);
+          setRefreshing(false);
+        });
     }
   }, [refreshing]);
   return (
@@ -42,6 +49,9 @@ const ArticleListView = () => {
       }}
       keyExtractor={(item) => item.compositionId.toString()}
       refreshing={refreshing}
+      ItemSeparatorComponent={() => (
+        <Divider style={{backgroundColor: borderColor}} />
+      )}
       onRefresh={() => setRefreshing(true)}
     />
   );
