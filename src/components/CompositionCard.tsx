@@ -18,7 +18,6 @@ import {
   secondaryTextColor,
   primaryTextColor,
 } from '../theme/colors';
-// import Tag from './Tag';
 
 interface Props {
   brief: string;
@@ -74,7 +73,7 @@ const CompositionCard = (props: Props) => {
         </Text>
         <View style={styles.bottom}>
           <Text style={{color: secondaryAccentColor}}>
-            {`${props.score}/100`}
+            {props.score ? `${props.score}/100` : '待评分'}
           </Text>
           <Icon
             name="delete"

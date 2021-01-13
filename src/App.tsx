@@ -10,7 +10,17 @@ import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/es/integration/react';
 import {store, persistor} from './store';
 // screens
-import {Login, Home, Creator, Message, User, Setting, Article} from './screens';
+import {
+  Login,
+  Home,
+  Creator,
+  Message,
+  User,
+  Setting,
+  Article,
+  Write,
+  Publish,
+} from './screens';
 // styles
 import {accentIconsColor, darkPrimaryColor} from './theme/colors';
 import {appStyle, PrimaryNavigationBarStyle} from './theme/styles';
@@ -93,6 +103,8 @@ export default class App extends React.Component {
                     onRight={() => {}}
                   />
                   <Scene key="Article" component={Article} hideNavBar />
+                  <Scene key="Publish" component={Publish} hideNavBar />
+                  <Scene key="Write" component={Write} hideNavBar />
                   <Scene
                     key="Setting"
                     component={Setting}

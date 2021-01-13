@@ -50,4 +50,5 @@ export interface Composition {
   title: string;
   visibility: number;
   score: number;
+  description: string;
 }

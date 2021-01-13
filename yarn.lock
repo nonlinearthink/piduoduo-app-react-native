@@ -1374,6 +1374,14 @@
   resolved "https://registry.npm.taobao.org/@types/prop-types/download/@types/prop-types-15.7.3.tgz?cache=0&sync_timestamp=1605055213103&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fprop-types%2Fdownload%2F%40types%2Fprop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
   integrity sha1-KrDV2i5YFflLC51LldHl8kOrLKc=
 
+"@types/react-native-modalbox@^1.4.8":
+  version "1.4.8"
+  resolved "https://registry.npm.taobao.org/@types/react-native-modalbox/download/@types/react-native-modalbox-1.4.8.tgz#e0cdd9e6ab08dcc9f330a9cf418e35298018fb58"
+  integrity sha1-4M3Z5qsI3MnzMKnPQY41KYAY+1g=
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
+
 "@types/react-native-scrollable-tab-view@^0.10.1":
   version "0.10.1"
   resolved "https://registry.npm.taobao.org/@types/react-native-scrollable-tab-view/download/@types/react-native-scrollable-tab-view-0.10.1.tgz#086c7021c24337ca60b4ce659486611c1669963d"
@@ -6318,6 +6326,13 @@ react-native-modal-popover@^0.0.12:
     "@types/prop-types" "^15.5.5"
     lodash.debounce "^4.0.8"
     prop-types "^15.6.2"
+
+react-native-modalbox@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.npm.taobao.org/react-native-modalbox/download/react-native-modalbox-2.0.2.tgz#8a7b3d2e7be79b5d1cb9530b2c6bc535b1bc8c66"
+  integrity sha1-ins9Lnvnm10cuVMLLGvFNbG8jGY=
+  dependencies:
+    prop-types "^15.5.10"
 
 react-native-ratings@^7.3.0:
   version "7.3.0"

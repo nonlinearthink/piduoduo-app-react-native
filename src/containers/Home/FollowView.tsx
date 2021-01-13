@@ -64,7 +64,7 @@ const FollowView = (props: Props) => {
           contentContainerStyle={styles.followList}>
           {(() => {
             return followList.map((item) => (
-              <View style={styles.followItem}>
+              <View style={styles.followItem} key={item.username}>
                 <Avatar
                   size="medium"
                   rounded

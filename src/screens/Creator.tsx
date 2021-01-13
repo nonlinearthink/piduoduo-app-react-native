@@ -3,9 +3,10 @@ import React, {useEffect, useState} from 'react';
 import {Text, FlatList} from 'react-native';
 // react native extensions
 import {Container, Tab, Tabs, StyleProvider, TabHeading} from 'native-base';
-import {Header, Divider} from 'react-native-elements';
+import {Header, Divider, Icon} from 'react-native-elements';
 import {ScaledSheet} from 'react-native-size-matters';
 import {useSelector} from 'react-redux';
+import {Actions} from 'react-native-router-flux';
 // styles
 import getTheme from '../../native-base-theme/components';
 import theme from '../../native-base-theme/variables/variables';
@@ -16,19 +17,24 @@ import {
   secondaryAccentColor,
   borderColor,
 } from '../theme/colors';
-import {getUserComposition} from '../apis/index';
+import {getUserComposition, deleteUserComposition} from '../apis';
 import {Composition} from '../apis/types';
 import CompositionCard from '../components/CompositionCard';
 import {StoreState} from '../types';
+import Toast from 'react-native-root-toast';
 
 const Creator = () => {
   const [draftList, setDraftList] = useState<Composition[]>([]);
   const [submittedList, setSubmittedList] = useState<Composition[]>([]);
   const [publishedList, setPublishedList] = useState<Composition[]>([]);
+  const [forceUpdate, setForceUpdate] = useState(false);
   const [refreshing, setRefreshing] = useState(true);
   const isLogin = useSelector((state: StoreState) => state.session.isLogin);
   useEffect(() => {
-    if (isLogin && refreshing) {
+    if (!isLogin) {
+      return;
+    }
+    if (refreshing) {
       getUserComposition()
         .then((res) => {
           console.log(res);
@@ -53,10 +59,34 @@ const Creator = () => {
           console.error(err);
           setRefreshing(false);
         });
+      setForceUpdate(false);
     } else {
       setRefreshing(false);
+      if (forceUpdate) {
+        setRefreshing(true);
+      }
     }
-  }, [isLogin, refreshing]);
+  }, [isLogin, refreshing, forceUpdate]);
+  const deleteComposition = (compositionId: number, onDelete?: Function) => {
+    deleteUserComposition(compositionId)
+      .then((res) => {
+        console.log(res);
+        Toast.show('删除成功', {
+          position: Toast.positions.CENTER,
+          animation: true,
+          hideOnPress: true,
+        });
+        onDelete && onDelete();
+      })
+      .catch((err) => {
+        console.log(err);
+        Toast.show('删除失败', {
+          position: Toast.positions.CENTER,
+          animation: true,
+          hideOnPress: true,
+        });
+      });
+  };
   return (
     // @ts-ignore
     <StyleProvider style={getTheme(theme)}>
@@ -66,11 +96,18 @@ const Creator = () => {
             text: '作文',
             style: {color: accentTextColor, fontSize: 16},
           }}
-          rightComponent={{
-            icon: 'plus',
-            color: accentTextColor,
-            type: 'antdesign',
-          }}
+          rightComponent={
+            <Icon
+              name="plus"
+              type="antdesign"
+              color={accentTextColor}
+              onPress={() =>
+                Actions.jump('Write', {
+                  updateCallback: () => setRefreshing(true),
+                })
+              }
+            />
+          }
           backgroundColor={primaryColor}
         />
         <Tabs
@@ -84,7 +121,7 @@ const Creator = () => {
             }>
             <FlatList
               data={draftList}
-              renderItem={({item}) => {
+              renderItem={({item, index}) => {
                 return (
                   <CompositionCard
                     brief={item.compositionBody}
@@ -93,7 +130,17 @@ const Creator = () => {
                     visibility={item.visibility}
                     score={item.score}
                     onPress={() => {
-                      // Actions.jump('Article', item);
+                      Actions.jump('Write', {
+                        ...item,
+                        updateCallback: () => setRefreshing(true),
+                      });
+                    }}
+                    onDelete={() => {
+                      deleteComposition(item.compositionId, () => {
+                        const listCopy = [...draftList];
+                        listCopy.splice(index, 1);
+                        setDraftList(listCopy);
+                      });
                     }}
                   />
                 );
@@ -114,7 +161,7 @@ const Creator = () => {
             }>
             <FlatList
               data={submittedList}
-              renderItem={({item}) => {
+              renderItem={({item, index}) => {
                 return (
                   <CompositionCard
                     brief={item.compositionBody}
@@ -122,8 +169,22 @@ const Creator = () => {
                     status={item.status}
                     visibility={item.visibility}
                     score={item.score}
-                    onPress={() => {
-                      // Actions.jump('Article', item);
+                    onPress={
+                      item.status === 2
+                        ? undefined
+                        : () => {
+                            Actions.jump('Publish', {
+                              ...item,
+                              updateCallback: () => setRefreshing(true),
+                            });
+                          }
+                    }
+                    onDelete={() => {
+                      deleteComposition(item.compositionId, () => {
+                        const listCopy = [...submittedList];
+                        listCopy.splice(index, 1);
+                        setSubmittedList(listCopy);
+                      });
                     }}
                   />
                 );
@@ -133,7 +194,10 @@ const Creator = () => {
                 <Divider style={{backgroundColor: borderColor}} />
               )}
               refreshing={refreshing}
-              onRefresh={() => setRefreshing(true)}
+              onRefresh={() => {
+                setRefreshing(true);
+                setForceUpdate(true);
+              }}
             />
           </Tab>
           <Tab
@@ -144,7 +208,7 @@ const Creator = () => {
             }>
             <FlatList
               data={publishedList}
-              renderItem={({item}) => {
+              renderItem={({item, index}) => {
                 return (
                   <CompositionCard
                     brief={item.compositionBody}
@@ -154,7 +218,17 @@ const Creator = () => {
                     score={item.score}
                     title={item.title}
                     onPress={() => {
-                      // Actions.jump('Article', item);
+                      Actions.jump('Publish', {
+                        ...item,
+                        updateCallback: () => setRefreshing(true),
+                      });
+                    }}
+                    onDelete={() => {
+                      deleteComposition(item.compositionId, () => {
+                        const listCopy = [...publishedList];
+                        listCopy.splice(index, 1);
+                        setPublishedList(listCopy);
+                      });
                     }}
                   />
                 );
@@ -170,7 +244,6 @@ const Creator = () => {
         </Tabs>
       </Container>
     </StyleProvider>
-    // </View>
   );
 };
 
