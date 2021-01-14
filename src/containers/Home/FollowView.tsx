@@ -8,6 +8,7 @@ import {Follow, FollowComposition} from '../../apis/types';
 import {Avatar, Divider} from 'react-native-elements';
 import FollowCompositionCard from '../../components/FollowCompositionCard';
 import {borderColor, globalAppBackgroundColor} from '../../theme/colors';
+import {Actions} from 'react-native-router-flux';
 
 const screen = Dimensions.get('window');
 
@@ -89,8 +90,7 @@ const FollowView = (props: Props) => {
             support={item.supportCount}
             comment={item.commentCount}
             onPress={() => {
-              //   Actions.jump('Article', item);
-              console.log('mock');
+              Actions.jump('Composition', item);
             }}
           />
         );

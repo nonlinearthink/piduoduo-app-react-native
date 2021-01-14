@@ -29,3 +29,27 @@ interface UpdateCompositionProps {
 export async function updateUserComposition(props: UpdateCompositionProps) {
   return await axios.put(`/composition/${props.compositionId}`, props);
 }
+
+export async function getComposition(compositionId: number) {
+  return await axios.get(`/composition/${compositionId}`);
+}
+
+export async function addSupport(compositionId: number) {
+  return await axios.post(`/support/${compositionId}`);
+}
+
+export async function deleteSupport(compositionId: number) {
+  return await axios.delete(`/support/${compositionId}`);
+}
+
+export async function addFavorite(compositionId: number) {
+  return await axios.post(`/favorite/${compositionId}`);
+}
+
+export async function deleteFavorite(compositionId: number) {
+  return await axios.delete(`/favorite/${compositionId}`);
+}
+
+export async function addComment(compositionId: number, body: string) {
+  return await axios.post(`/comment/${compositionId}`, {commentBody: body});
+}

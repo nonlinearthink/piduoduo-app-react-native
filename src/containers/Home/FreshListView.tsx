@@ -2,7 +2,6 @@
 import React, {useState, useEffect} from 'react';
 import {FlatList} from 'react-native';
 // react native extensions
-// import {Actions} from 'react-native-router-flux';
 import {Divider} from 'react-native-elements';
 // my components
 import FreshCard from '../../components/FreshCard';
@@ -11,6 +10,7 @@ import {getFreshList} from '../../apis';
 // types
 import {FreshComposition} from '../../apis/types';
 import {borderColor} from '../../theme/colors';
+import {Actions} from 'react-native-router-flux';
 
 const ArticleListView = () => {
   const [refreshing, setRefreshing] = useState(true);
@@ -48,8 +48,7 @@ const ArticleListView = () => {
             read={item.historyCount}
             comment={item.commentCount}
             onPress={() => {
-              //   Actions.jump('Article', item);
-              console.log('mock');
+              Actions.jump('Composition', item);
             }}
           />
         );

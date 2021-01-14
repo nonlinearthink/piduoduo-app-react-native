@@ -1,6 +1,6 @@
 // react native
 import React from 'react';
-import {View} from 'react-native';
+import {View, SafeAreaView} from 'react-native';
 // react native extensions
 import {Button} from 'react-native-elements';
 import {Actions} from 'react-native-router-flux';
@@ -22,23 +22,25 @@ interface Props {
 
 const SettingMain = (props: Props) => {
   return (
-    <View style={styles.settingGroup}>
-      <SettingCell title="账号资料" isLink />
-      <SettingCell title="安全隐私" isLink />
-      <SettingCell title="关于批多多" isLink />
-      {(() => {
-        return props.isLogin ? (
-          <View>
-            <Button
-              title="退出登录"
-              type="clear"
-              titleStyle={styles.quitText}
-              onPress={props.onQuit}
-            />
-          </View>
-        ) : undefined;
-      })()}
-    </View>
+    <SafeAreaView style={styles.safeAreaContainer}>
+      <View style={styles.settingGroup}>
+        <SettingCell title="账号资料" isLink />
+        <SettingCell title="安全隐私" isLink />
+        <SettingCell title="关于批多多" isLink />
+        {(() => {
+          return props.isLogin ? (
+            <View>
+              <Button
+                title="退出登录"
+                type="clear"
+                titleStyle={styles.quitText}
+                onPress={props.onQuit}
+              />
+            </View>
+          ) : undefined;
+        })()}
+      </View>
+    </SafeAreaView>
   );
 };
 

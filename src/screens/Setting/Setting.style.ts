@@ -11,6 +11,9 @@ const styles = ScaledSheet.create({
   quitText: {
     color: secondaryAccentColor,
   },
+  safeAreaContainer: {
+    flex: 1,
+  },
 });
 
 export default styles;

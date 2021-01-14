@@ -7,6 +7,7 @@ import * as UserAlias from './User';
 import * as ArticleAlias from './Article';
 import * as WriteAlias from './Write';
 import * as PublishAlias from './Publish';
+import * as CompositionAlias from './Composition';
 
 export const Creator = CreatorAlias.default;
 export const Home = HomeAlias.default;
@@ -17,3 +18,4 @@ export const User = UserAlias.default;
 export const Article = ArticleAlias.default;
 export const Write = WriteAlias.default;
 export const Publish = PublishAlias.default;
+export const Composition = CompositionAlias.default;
