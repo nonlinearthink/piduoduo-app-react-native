@@ -7,13 +7,15 @@ import {Actions} from 'react-native-router-flux';
 // redux tool
 import {Dispatch} from 'redux';
 import {connect} from 'react-redux';
-import {clearToken, initUserInfo} from '../../store/actions';
+import {clearToken, initUserInfo} from '../store/actions';
 // my components
-import SettingCell from '../../components/SettingCell';
-// styles
-import styles from './Setting.style';
+import SettingCell from '../components/SettingCell';
 // types
-import {StoreState} from '../../types';
+import {StoreState} from '../types';
+// style tool
+import {ScaledSheet} from 'react-native-size-matters';
+// colors
+import {defaultBackgroundColor, secondaryAccentColor} from '../theme/colors';
 
 interface Props {
   isLogin?: boolean;
@@ -43,6 +45,19 @@ const SettingMain = (props: Props) => {
     </SafeAreaView>
   );
 };
+
+const styles = ScaledSheet.create({
+  settingGroup: {
+    backgroundColor: defaultBackgroundColor,
+    paddingHorizontal: '16@s',
+  },
+  quitText: {
+    color: secondaryAccentColor,
+  },
+  safeAreaContainer: {
+    flex: 1,
+  },
+});
 
 const mapStateToProps = (state: StoreState) => ({
   isLogin: state.session.isLogin,

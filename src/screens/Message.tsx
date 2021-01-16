@@ -1,6 +1,6 @@
 // react native
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, TouchableHighlight} from 'react-native';
 import {Header} from 'react-native-elements';
 import {
   accentTextColor,
@@ -9,6 +9,7 @@ import {
 } from '../theme/colors';
 import {Icon} from 'react-native-elements';
 import {ScaledSheet} from 'react-native-size-matters';
+import {Actions} from 'react-native-router-flux';
 
 const Message = () => {
   return (
@@ -43,15 +44,17 @@ const Message = () => {
           <Icon name="like2" type="antdesign" size={32} color={primaryColor} />
           <Text>收到的赞</Text>
         </View>
-        <View>
-          <Icon
-            name="volume-high-outline"
-            type="ionicon"
-            size={32}
-            color={primaryColor}
-          />
-          <Text>系统通知</Text>
-        </View>
+        <TouchableHighlight onPress={() => Actions.jump('SystemMessage')}>
+          <View style={{backgroundColor: defaultBackgroundColor}}>
+            <Icon
+              name="volume-high-outline"
+              type="ionicon"
+              size={32}
+              color={primaryColor}
+            />
+            <Text>系统通知</Text>
+          </View>
+        </TouchableHighlight>
       </View>
     </View>
   );

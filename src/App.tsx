@@ -21,6 +21,7 @@ import {
   Write,
   Publish,
   Composition,
+  SystemMessage,
 } from './screens';
 // styles
 import {accentIconsColor, darkPrimaryColor} from './theme/colors';
@@ -107,6 +108,11 @@ export default class App extends React.Component {
                   <Scene key="Publish" component={Publish} hideNavBar />
                   <Scene key="Write" component={Write} hideNavBar />
                   <Scene key="Composition" component={Composition} hideNavBar />
+                  <Scene
+                    key="SystemMessage"
+                    component={SystemMessage}
+                    hideNavBar
+                  />
                   <Scene
                     key="Setting"
                     component={Setting}

@@ -32,6 +32,7 @@ const Creator = () => {
   const isLogin = useSelector((state: StoreState) => state.session.isLogin);
   useEffect(() => {
     if (!isLogin) {
+      setRefreshing(false);
       return;
     }
     if (refreshing) {

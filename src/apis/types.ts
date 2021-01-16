@@ -52,3 +52,10 @@ export interface Composition {
   score: number;
   description: string;
 }
+
+export interface SystemMessageModel {
+  systemMessageId: number;
+  adminName: string;
+  systemMessageBody: string;
+  time: number;
+}
