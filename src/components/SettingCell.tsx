@@ -13,6 +13,7 @@ interface Props {
   prefix?: React.ComponentElement<any, any> | undefined;
   title?: string;
   isLink?: boolean;
+  description?: string;
   onPress?: (event: GestureResponderEvent) => void;
 }
 
@@ -20,6 +21,7 @@ const defaultProps: Props = {
   prefix: undefined,
   title: '',
   isLink: false,
+  description: undefined,
 };
 
 const SettingCell = (props = defaultProps) => {
@@ -29,7 +31,12 @@ const SettingCell = (props = defaultProps) => {
       <View style={styles.cellContainer}>
         <View style={styles.header}>
           {props.prefix ? props.prefix : undefined}
-          <Text style={styles.title}>{props.title}</Text>
+          <View>
+            <Text style={styles.title}>{props.title}</Text>
+            {props.description ? (
+              <Text style={styles.description}>{props.description}</Text>
+            ) : undefined}
+          </View>
         </View>
         {(() => {
           if (props.isLink) {
@@ -63,6 +70,9 @@ const styles = ScaledSheet.create({
   },
   title: {
     fontSize: '14@s',
+  },
+  description: {
+    color: secondaryTextColor,
   },
 });
 

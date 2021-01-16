@@ -59,3 +59,11 @@ export interface SystemMessageModel {
   systemMessageBody: string;
   time: number;
 }
+
+export interface HelpModel {
+  helpId: number;
+  adminName: string;
+  helpTitle: string;
+  helpBody: string;
+  time: number;
+}

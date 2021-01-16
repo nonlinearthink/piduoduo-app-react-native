@@ -1,8 +1,8 @@
 // react native
 import React from 'react';
-import {View, SafeAreaView} from 'react-native';
+import {View} from 'react-native';
 // react native extensions
-import {Button} from 'react-native-elements';
+import {Button, Header, Icon} from 'react-native-elements';
 import {Actions} from 'react-native-router-flux';
 // redux tool
 import {Dispatch} from 'redux';
@@ -15,7 +15,13 @@ import {StoreState} from '../types';
 // style tool
 import {ScaledSheet} from 'react-native-size-matters';
 // colors
-import {defaultBackgroundColor, secondaryAccentColor} from '../theme/colors';
+import {
+  defaultBackgroundColor,
+  secondaryAccentColor,
+  accentTextColor,
+  primaryColor,
+  accentIconsColor,
+} from '../theme/colors';
 
 interface Props {
   isLogin?: boolean;
@@ -24,11 +30,38 @@ interface Props {
 
 const SettingMain = (props: Props) => {
   return (
-    <SafeAreaView style={styles.safeAreaContainer}>
+    <View style={styles.safeAreaContainer}>
+      <Header
+        centerComponent={{
+          text: '设置',
+          style: {color: accentTextColor, fontSize: 16},
+        }}
+        leftComponent={
+          <Icon
+            name="left"
+            type="antdesign"
+            color={accentIconsColor}
+            onPress={() => Actions.pop()}
+          />
+        }
+        backgroundColor={primaryColor}
+      />
       <View style={styles.settingGroup}>
-        <SettingCell title="账号资料" isLink />
-        <SettingCell title="安全隐私" isLink />
-        <SettingCell title="关于批多多" isLink />
+        <SettingCell
+          title="账号资料"
+          isLink
+          onPress={() => Actions.jump('UserInfoSetting')}
+        />
+        <SettingCell
+          title="安全隐私"
+          isLink
+          onPress={() => Actions.jump('SecuritySetting')}
+        />
+        <SettingCell
+          title="关于批多多"
+          isLink
+          onPress={() => Actions.jump('About')}
+        />
         {(() => {
           return props.isLogin ? (
             <View>
@@ -42,7 +75,7 @@ const SettingMain = (props: Props) => {
           ) : undefined;
         })()}
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 

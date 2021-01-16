@@ -82,6 +82,7 @@ const User = () => {
             />
           }
           isLink
+          onPress={() => Actions.jump('Help')}
         />
         <SettingCell
           title="意见反馈"
@@ -94,6 +95,7 @@ const User = () => {
             />
           }
           isLink
+          onPress={() => Actions.jump('Feedback')}
         />
         <SettingCell
           title="设置"

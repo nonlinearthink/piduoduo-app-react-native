@@ -22,6 +22,12 @@ import {
   Publish,
   Composition,
   SystemMessage,
+  UserInfoSetting,
+  SecuritySetting,
+  PasswordChangeSetting,
+  About,
+  Help,
+  Feedback
 } from './screens';
 // styles
 import {accentIconsColor, darkPrimaryColor} from './theme/colors';
@@ -108,23 +114,29 @@ export default class App extends React.Component {
                   <Scene key="Publish" component={Publish} hideNavBar />
                   <Scene key="Write" component={Write} hideNavBar />
                   <Scene key="Composition" component={Composition} hideNavBar />
+                  <Scene key="Setting" component={Setting} hideNavBar />
+                  <Scene key="About" component={About} hideNavBar />
+                  <Scene key="Help" component={Help} hideNavBar />
+                  <Scene key="Feedback" component={Feedback} hideNavBar />
+                  <Scene
+                    key="SecuritySetting"
+                    component={SecuritySetting}
+                    hideNavBar
+                  />
+                  <Scene
+                    key="PasswordChangeSetting"
+                    component={PasswordChangeSetting}
+                    hideNavBar
+                  />
+                  <Scene
+                    key="UserInfoSetting"
+                    component={UserInfoSetting}
+                    hideNavBar
+                  />
                   <Scene
                     key="SystemMessage"
                     component={SystemMessage}
                     hideNavBar
-                  />
-                  <Scene
-                    key="Setting"
-                    component={Setting}
-                    title="设置"
-                    back
-                    backButtonTintColor={accentIconsColor}
-                    titleStyle={PrimaryNavigationBarStyle.titleStyle}
-                    navigationBarStyle={
-                      PrimaryNavigationBarStyle.navigationBarStyle
-                    }
-                    rightTitle=" "
-                    onRight={() => {}}
                   />
                 </Stack>
               </Router>
