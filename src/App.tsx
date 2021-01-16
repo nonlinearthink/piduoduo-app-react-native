@@ -14,7 +14,6 @@ import {
   Login,
   Home,
   Creator,
-  Message,
   User,
   Setting,
   Article,
@@ -27,7 +26,8 @@ import {
   PasswordChangeSetting,
   About,
   Help,
-  Feedback
+  Feedback,
+  History,
 } from './screens';
 // styles
 import {accentIconsColor, darkPrimaryColor} from './theme/colors';
@@ -44,19 +44,13 @@ const generateTabScene = () => {
     {
       key: 'Creator',
       content: Creator,
-      label: '写作',
+      label: '作文',
       icon: {type: 'antdesign', name: 'edit'},
-    },
-    {
-      key: 'Message',
-      content: Message,
-      label: '首页',
-      icon: {type: 'antdesign', name: 'message1'},
     },
     {
       key: 'User',
       content: User,
-      label: '首页',
+      label: '我的',
       icon: {type: 'antdesign', name: 'user'},
     },
   ];
@@ -118,6 +112,7 @@ export default class App extends React.Component {
                   <Scene key="About" component={About} hideNavBar />
                   <Scene key="Help" component={Help} hideNavBar />
                   <Scene key="Feedback" component={Feedback} hideNavBar />
+                  <Scene key="History" component={History} hideNavBar />
                   <Scene
                     key="SecuritySetting"
                     component={SecuritySetting}

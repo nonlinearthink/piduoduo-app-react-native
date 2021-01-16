@@ -2,12 +2,13 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 // react native extensions
-import {Avatar, Button} from 'react-native-elements';
+import {Avatar, Button, Icon} from 'react-native-elements';
 import {Actions} from 'react-native-router-flux';
 // styles
 import styles from './UserInfoCard.style';
 // types
 import {UserInfo} from '../../types';
+import {accentIconsColor} from '../../theme/colors';
 
 interface Props {
   isLogin?: boolean;
@@ -30,36 +31,45 @@ const signatureView = (signature: string | undefined) => {
 const UserInfoCard = (props: Props) => {
   return (
     <View style={styles.container}>
-      <View style={styles.row}>
-        <Avatar
-          size="large"
-          rounded
-          source={require('../../assets/images/avatar.png')}
-          containerStyle={styles.avatarContainer}
+      <View style={styles.userInfoContainer}>
+        <View style={styles.row}>
+          <Avatar
+            size="large"
+            rounded
+            source={require('../../assets/images/avatar.png')}
+            containerStyle={styles.avatarContainer}
+          />
+          {(() => {
+            if (props.isLogin) {
+              return (
+                <View>
+                  <Text style={styles.username}>
+                    {props.user ? props.user.username : ''}
+                  </Text>
+                  {signatureView(props.user ? props.user.signature : '')}
+                </View>
+              );
+            } else {
+              return (
+                <Button
+                  title="点击登录"
+                  type="clear"
+                  titleStyle={styles.text}
+                  onPress={() => {
+                    Actions.push('Login');
+                  }}
+                />
+              );
+            }
+          })()}
+        </View>
+        <Icon
+          name="envelope"
+          type="evilicon"
+          size={32}
+          color={accentIconsColor}
+          onPress={() => Actions.jump('SystemMessage')}
         />
-        {(() => {
-          if (props.isLogin) {
-            return (
-              <View>
-                <Text style={styles.username}>
-                  {props.user ? props.user.username : ''}
-                </Text>
-                {signatureView(props.user ? props.user.signature : '')}
-              </View>
-            );
-          } else {
-            return (
-              <Button
-                title="点击登录"
-                type="clear"
-                titleStyle={styles.text}
-                onPress={() => {
-                  Actions.push('Login');
-                }}
-              />
-            );
-          }
-        })()}
       </View>
       <View style={styles.statisticView}>
         <View style={styles.statisticItem}>

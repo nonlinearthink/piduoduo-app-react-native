@@ -24,6 +24,15 @@ const User = () => {
         <View style={styles.floatCard}>
           <View>
             <Icon
+              name="like2"
+              type="antdesign"
+              size={32}
+              color={primaryTextColor}
+            />
+            <Text>收到的赞</Text>
+          </View>
+          <View>
+            <Icon
               name="star-o"
               type="font-awesome"
               size={32}
@@ -33,21 +42,12 @@ const User = () => {
           </View>
           <View>
             <Icon
-              name="history"
-              type="material-community"
+              name="chatbox-ellipses-outline"
+              type="ionicon"
               size={32}
               color={primaryTextColor}
             />
-            <Text>浏览记录</Text>
-          </View>
-          <View>
-            <Icon
-              name="like2"
-              type="antdesign"
-              size={32}
-              color={primaryTextColor}
-            />
-            <Text>我赞过的</Text>
+            <Text>回复我的</Text>
           </View>
         </View>
         <SettingCell
@@ -71,6 +71,19 @@ const User = () => {
         />
       </View>
       <View style={styles.settingGroup}>
+        <SettingCell
+          title="浏览记录"
+          prefix={
+            <Icon
+              name="history"
+              type="material-community"
+              color={primaryColor}
+              containerStyle={styles.icon}
+            />
+          }
+          isLink
+          onPress={() => Actions.jump('History')}
+        />
         <SettingCell
           title="帮助手册"
           prefix={

@@ -1,7 +1,6 @@
 import * as CreatorAlias from './Creator';
 import * as HomeAlias from './Home';
 import * as LoginAlias from './Login';
-import * as MessageAlias from './Message';
 import * as SettingAlias from './Setting';
 import * as UserAlias from './User';
 import * as ArticleAlias from './Article';
@@ -15,11 +14,11 @@ import * as PasswordChangeSettingAlias from './PasswordChangeSetting';
 import * as AboutAlias from './About';
 import * as HelpAlias from './Help';
 import * as FeedbackAlias from './Feedback';
+import * as HistoryAlias from './History';
 
 export const Creator = CreatorAlias.default;
 export const Home = HomeAlias.default;
 export const Login = LoginAlias.default;
-export const Message = MessageAlias.default;
 export const Setting = SettingAlias.default;
 export const User = UserAlias.default;
 export const Article = ArticleAlias.default;
@@ -33,3 +32,4 @@ export const PasswordChangeSetting = PasswordChangeSettingAlias.default;
 export const About = AboutAlias.default;
 export const Help = HelpAlias.default;
 export const Feedback = FeedbackAlias.default;
+export const History = HistoryAlias.default;

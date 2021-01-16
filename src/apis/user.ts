@@ -34,3 +34,7 @@ export async function addFeedback(body: string, type: number) {
     feedbackType: type,
   });
 }
+
+export async function getHistory() {
+  return await axios.get('/history');
+}

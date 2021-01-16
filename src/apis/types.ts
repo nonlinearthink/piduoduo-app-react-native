@@ -67,3 +67,12 @@ export interface HelpModel {
   helpBody: string;
   time: number;
 }
+
+export interface HistoryModel {
+  historyId: number;
+  nickname: string;
+  title: string;
+  compositionId: number;
+  compositionBody: string;
+  time: number;
+}
