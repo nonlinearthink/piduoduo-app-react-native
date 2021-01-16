@@ -15,6 +15,9 @@ import * as AboutAlias from './About';
 import * as HelpAlias from './Help';
 import * as FeedbackAlias from './Feedback';
 import * as HistoryAlias from './History';
+import * as CommentAlias from './Comment';
+import * as SupportAlias from './Support';
+import * as FavoriteAlias from './Favorite';
 
 export const Creator = CreatorAlias.default;
 export const Home = HomeAlias.default;
@@ -33,3 +36,6 @@ export const About = AboutAlias.default;
 export const Help = HelpAlias.default;
 export const Feedback = FeedbackAlias.default;
 export const History = HistoryAlias.default;
+export const Comment = CommentAlias.default;
+export const Support = SupportAlias.default;
+export const Favorite = FavoriteAlias.default;

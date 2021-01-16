@@ -76,3 +76,22 @@ export interface HistoryModel {
   compositionBody: string;
   time: number;
 }
+
+export interface CommentModel {
+  commentId: number;
+  commentBody: string;
+  compositionId: number;
+  username: string;
+  nickname: string;
+  title: string;
+  time: number;
+}
+
+export interface SupportModel {
+  supportId: number;
+  compositionId: number;
+  username: string;
+  nickname: string;
+  title: string;
+  time: number;
+}

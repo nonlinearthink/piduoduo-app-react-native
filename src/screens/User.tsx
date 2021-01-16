@@ -1,6 +1,6 @@
 // react native
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, TouchableHighlight} from 'react-native';
 // react native extensions
 import {Icon} from 'react-native-elements';
 import Toast from 'react-native-root-toast';
@@ -22,33 +22,39 @@ const User = () => {
       <UserInfoCard />
       <View style={styles.floatCardContainer}>
         <View style={styles.floatCard}>
-          <View>
-            <Icon
-              name="like2"
-              type="antdesign"
-              size={32}
-              color={primaryTextColor}
-            />
-            <Text>收到的赞</Text>
-          </View>
-          <View>
-            <Icon
-              name="star-o"
-              type="font-awesome"
-              size={32}
-              color={primaryTextColor}
-            />
-            <Text>我的收藏</Text>
-          </View>
-          <View>
-            <Icon
-              name="chatbox-ellipses-outline"
-              type="ionicon"
-              size={32}
-              color={primaryTextColor}
-            />
-            <Text>回复我的</Text>
-          </View>
+          <TouchableHighlight onPress={() => Actions.jump('Support')}>
+            <View style={{backgroundColor: defaultBackgroundColor}}>
+              <Icon
+                name="like2"
+                type="antdesign"
+                size={32}
+                color={primaryTextColor}
+              />
+              <Text>收到的赞</Text>
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight onPress={() => Actions.jump('Favorite')}>
+            <View style={{backgroundColor: defaultBackgroundColor}}>
+              <Icon
+                name="star-o"
+                type="font-awesome"
+                size={32}
+                color={primaryTextColor}
+              />
+              <Text>我的收藏</Text>
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight onPress={() => Actions.jump('Comment')}>
+            <View style={{backgroundColor: defaultBackgroundColor}}>
+              <Icon
+                name="chatbox-ellipses-outline"
+                type="ionicon"
+                size={32}
+                color={primaryTextColor}
+              />
+              <Text>回复我的</Text>
+            </View>
+          </TouchableHighlight>
         </View>
         <SettingCell
           title="会员中心"

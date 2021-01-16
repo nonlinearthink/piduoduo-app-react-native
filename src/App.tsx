@@ -28,6 +28,9 @@ import {
   Help,
   Feedback,
   History,
+  Comment,
+  Support,
+  Favorite,
 } from './screens';
 // styles
 import {accentIconsColor, darkPrimaryColor} from './theme/colors';
@@ -113,6 +116,9 @@ export default class App extends React.Component {
                   <Scene key="Help" component={Help} hideNavBar />
                   <Scene key="Feedback" component={Feedback} hideNavBar />
                   <Scene key="History" component={History} hideNavBar />
+                  <Scene key="Comment" component={Comment} hideNavBar />
+                  <Scene key="Support" component={Support} hideNavBar />
+                  <Scene key="Favorite" component={Favorite} hideNavBar />
                   <Scene
                     key="SecuritySetting"
                     component={SecuritySetting}
