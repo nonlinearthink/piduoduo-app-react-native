@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, processColor} from 'react-native';
 import {Header, Icon, Input, ButtonGroup, Button} from 'react-native-elements';
 import {Textarea, Container, Content} from 'native-base';
 import {
@@ -13,6 +13,7 @@ import Modal from 'react-native-modalbox';
 import {ScaledSheet} from 'react-native-size-matters';
 import {updateUserComposition} from '../apis';
 import Toast from 'react-native-root-toast';
+import {RadarChart, xAxis, RadarData} from 'react-native-charts-wrapper';
 
 interface Props {
   compositionId: number;
@@ -22,22 +23,70 @@ interface Props {
   visibility?: number;
   score?: number;
   description?: string;
+  wordScore?: number;
+  grammarScore?: number;
+  sentenceFluencyScore?: number;
+  lengthScore?: number;
+  richnessScore?: number;
   updateCallback?: Function;
 }
 
 const Publish = (props: Props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [row, setRow] = useState(1);
+  const [row, setRow] = useState(2);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   //   const [content, setContent] = useState('');
   const [lastHeight, setLastHeight] = useState(0);
   const [submitConfirm, setSubmitConfirm] = useState(false);
   const buttons = ['私密', '仅粉丝可见', '公开'];
+  const label: xAxis = {
+    valueFormatter: ['拼写', '语法', '流畅度', '长度', '丰富度'],
+  };
+  const [data, setData] = useState<RadarData>({
+    dataSets: [
+      {
+        values: [{value: 0}, {value: 0}, {value: 0}, {value: 0}, {value: 0}],
+        label: '评分',
+        config: {
+          color: processColor('#536DFE'),
+          drawFilled: true,
+          fillColor: processColor('#536DFE'),
+          fillAlpha: 100,
+          lineWidth: 2,
+        },
+      },
+    ],
+  });
   useEffect(() => {
     props.title && setTitle(props.title);
     props.description && setDescription(props.description);
     props.visibility && setSelectedIndex(props.visibility - 1);
+    setData({
+      dataSets: [
+        {
+          values: [
+            {value: props.wordScore ? props.wordScore : 0},
+            {value: props.grammarScore ? props.grammarScore : 0},
+            {
+              value: props.sentenceFluencyScore
+                ? props.sentenceFluencyScore
+                : 0,
+            },
+            {value: props.lengthScore ? props.lengthScore : 0},
+            {value: props.richnessScore ? props.richnessScore : 0},
+          ],
+          label: '评分',
+          config: {
+            color: processColor('#536DFE'),
+            drawFilled: true,
+            fillColor: processColor('#536DFE'),
+            fillAlpha: 100,
+            lineWidth: 2,
+          },
+        },
+      ],
+    });
     // props.compositionBody && setContent(props.compositionBody);
   }, [props]);
   return (
@@ -107,6 +156,22 @@ const Publish = (props: Props) => {
             setLastHeight(e.nativeEvent.contentSize.height);
           }}
         />
+        <View style={styles.chartContainer}>
+          <RadarChart
+            style={styles.chart}
+            data={data}
+            xAxis={label}
+            yAxis={{drawLabels: true}}
+            chartDescription={{text: ''}}
+            drawWeb={true}
+            webLineWidth={1}
+            webLineWidthInner={1}
+            webAlpha={255}
+            webColor={processColor('#607D8B')}
+            webColorInner={processColor('#9E9E9E')}
+            skipWebLineCount={1}
+          />
+        </View>
       </Content>
       <Modal
         isOpen={submitConfirm}
@@ -168,5 +233,11 @@ const styles = ScaledSheet.create({
     textAlign: 'center',
     marginVertical: '16@vs',
     fontSize: '14@s',
+  },
+  chartContainer: {
+    backgroundColor: '#F5FCFF',
+  },
+  chart: {
+    height: 300,
   },
 });

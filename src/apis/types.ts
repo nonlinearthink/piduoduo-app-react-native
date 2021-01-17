@@ -51,6 +51,11 @@ export interface Composition {
   visibility: number;
   score: number;
   description: string;
+  wordScore: number;
+  grammarScore: number;
+  sentenceFluencyScore: number;
+  lengthScore: number;
+  richnessScore: number;
 }
 
 export interface SystemMessageModel {

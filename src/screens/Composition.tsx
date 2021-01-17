@@ -1,5 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  FlatList,
+  processColor,
+} from 'react-native';
 import {
   Header,
   Icon,
@@ -34,6 +41,7 @@ import {Container, Footer, Content} from 'native-base';
 import Comment from '../components/Comment';
 import {StoreState} from '../types';
 import Toast from 'react-native-root-toast';
+import {RadarChart, xAxis, RadarData} from 'react-native-charts-wrapper';
 
 interface Props {
   compositionId: number;
@@ -50,6 +58,11 @@ interface CompositionMessage {
   favoriteCount: number;
   supportCount: number;
   commentCount: number;
+  wordScore: number;
+  grammarScore: number;
+  sentenceFluencyScore: number;
+  lengthScore: number;
+  richnessScore: number;
 }
 
 interface Comment {
@@ -64,12 +77,35 @@ const Composition = (props: Props) => {
     favoriteCount: 0,
     supportCount: 0,
     commentCount: 0,
+    wordScore: 0,
+    grammarScore: 0,
+    sentenceFluencyScore: 0,
+    lengthScore: 0,
+    richnessScore: 0,
   });
   const [support, setSupport] = useState(false);
   const [favorite, setFavorite] = useState(false);
   const [comment, setComment] = useState('');
   const [commentList, setCommentList] = useState<Comment[]>([]);
   const username = useSelector((state: StoreState) => state.user.username);
+  const label: xAxis = {
+    valueFormatter: ['拼写', '语法', '流畅度', '长度', '丰富度'],
+  };
+  const [data, setData] = useState<RadarData>({
+    dataSets: [
+      {
+        values: [{value: 0}, {value: 0}, {value: 0}, {value: 0}, {value: 0}],
+        label: '评分',
+        config: {
+          color: processColor('#536DFE'),
+          drawFilled: true,
+          fillColor: processColor('#536DFE'),
+          fillAlpha: 100,
+          lineWidth: 2,
+        },
+      },
+    ],
+  });
   // const
   useEffect(() => {
     getComposition(props.compositionId)
@@ -84,6 +120,33 @@ const Composition = (props: Props) => {
         console.error(err);
       });
   }, [props.compositionId]);
+  useEffect(() => {
+    setData({
+      dataSets: [
+        {
+          values: [
+            {value: message.wordScore ? message.wordScore : 0},
+            {value: message.grammarScore ? message.grammarScore : 0},
+            {
+              value: message.sentenceFluencyScore
+                ? message.sentenceFluencyScore
+                : 0,
+            },
+            {value: message.lengthScore ? message.lengthScore : 0},
+            {value: message.richnessScore ? message.richnessScore : 0},
+          ],
+          label: '评分',
+          config: {
+            color: processColor('#536DFE'),
+            drawFilled: true,
+            fillColor: processColor('#536DFE'),
+            fillAlpha: 100,
+            lineWidth: 2,
+          },
+        },
+      ],
+    });
+  }, [message]);
   return (
     <Container>
       <Header
@@ -135,6 +198,22 @@ const Composition = (props: Props) => {
         <View>
           <Text style={styles.itemTitle}>说明</Text>
           <Text style={styles.body}>{message.description}</Text>
+        </View>
+        <View style={styles.chartContainer}>
+          <RadarChart
+            style={styles.chart}
+            data={data}
+            xAxis={label}
+            yAxis={{drawLabels: true}}
+            chartDescription={{text: ''}}
+            drawWeb={true}
+            webLineWidth={1}
+            webLineWidthInner={1}
+            webAlpha={255}
+            webColor={processColor('#607D8B')}
+            webColorInner={processColor('#9E9E9E')}
+            skipWebLineCount={1}
+          />
         </View>
         <View>
           <Text style={styles.itemTitle}>评论列表</Text>
@@ -335,5 +414,11 @@ const styles = StyleSheet.create({
   },
   footerButtonText: {
     textAlign: 'center',
+  },
+  chartContainer: {
+    backgroundColor: '#F5FCFF',
+  },
+  chart: {
+    height: 300,
   },
 });
