@@ -17,8 +17,8 @@ import HotListView from '../containers/Home/HotListView';
 import FreshListView from '../containers/Home/FreshListView';
 import FollowView from '../containers/Home/FollowView';
 // styles
-import getTheme from '../../native-base-theme/components';
-import platform from '../../native-base-theme/variables/variables';
+import getTheme from '../theme/native-base-theme/components';
+import platform from '../theme/native-base-theme/variables/variables';
 // style tools
 import {ScaledSheet} from 'react-native-size-matters';
 // colors

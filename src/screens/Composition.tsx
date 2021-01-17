@@ -4,7 +4,6 @@ import {
   Text,
   View,
   TouchableOpacity,
-  FlatList,
   processColor,
 } from 'react-native';
 import {
@@ -215,25 +214,22 @@ const Composition = (props: Props) => {
             skipWebLineCount={1}
           />
         </View>
-        <View>
-          <Text style={styles.itemTitle}>评论列表</Text>
-          <FlatList
-            data={commentList}
-            renderItem={({item}) => {
-              return (
+        {/* <View> */}
+        <Text style={styles.itemTitle}>评论列表</Text>
+        {(() =>
+          commentList.map((item) => {
+            return (
+              <View>
                 <Comment
                   user={item.username}
                   time={item.time}
                   content={item.commentBody}
+                  key={item.commentId}
                 />
-              );
-            }}
-            keyExtractor={(item) => item.commentId.toString()}
-            ItemSeparatorComponent={() => (
-              <Divider style={{backgroundColor: borderColor}} />
-            )}
-          />
-        </View>
+                <Divider style={{backgroundColor: borderColor}} />
+              </View>
+            );
+          }))()}
       </Content>
       <Footer style={styles.footer}>
         <Input

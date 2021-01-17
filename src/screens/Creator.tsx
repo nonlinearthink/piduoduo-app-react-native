@@ -8,8 +8,8 @@ import {ScaledSheet} from 'react-native-size-matters';
 import {useSelector} from 'react-redux';
 import {Actions} from 'react-native-router-flux';
 // styles
-import getTheme from '../../native-base-theme/components';
-import theme from '../../native-base-theme/variables/variables';
+import getTheme from '../theme/native-base-theme/components';
+import theme from '../theme/native-base-theme/variables/variables';
 import {
   accentTextColor,
   primaryColor,
